@@ -1,0 +1,35 @@
+CREATE DATABASE prjct_california;
+
+USE prjct_california;
+
+CREATE TABLE CALI_POPULATION(
+  country_code varchar(50) NOt NULL,
+  County_Name varchar (50) NOT NULL,
+  Year int NOT NULL,
+  Race_Code INT NOT NULL,
+  Race_Name TEXT NOT NULL,
+  Gender varchar(6),
+  Age int NOT NULL,
+  population INT NOT NULL);
+  
+
+--/* Load Data */
+/* ignore first header line, delimiter setting, etc*/
+
+  LOAD DATA INFILE 
+"D:\\PROJECTS DTASETS\\CA_DRU_proj_2010-2060.csv"
+INTO TABLE cali_population
+fields terminated by ','
+enclosed  by '"'
+lines terminated by '\n'
+ignore 1 rows;
+
+/* check the loaded data */
+
+SELECT * FROM CALI_POPULATION;
+
+--SIDE NOTE- You can try changing the DBMS connection read timeout interval (in seconds) setting
+in the SQL Editor tab in the Workbench's preferences. 
+Change it to something like 180. 
+Then restart the Workbench or reconnect to the DBMS and rerun the query. Hope this helps. 
+SOURCE @365datascience.com
